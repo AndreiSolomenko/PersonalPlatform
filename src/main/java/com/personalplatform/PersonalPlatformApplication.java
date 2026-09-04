@@ -20,7 +20,7 @@ public class PersonalPlatformApplication {
 
             TestData data = new TestData();
             data.setKey("test");
-            data.setValue("Hello Render!");
+            data.setValue("NEW DATA");
 
             repository.save(data);
 
