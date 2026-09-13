@@ -135,6 +135,8 @@ public class CsvImportService {
      */
     private StoreData parseLine(String line) {
 
+        line = line.replace("\uFEFF", "");
+
         // Розділяємо магазин та решту
         int tildeIndex = line.indexOf('~');
 
