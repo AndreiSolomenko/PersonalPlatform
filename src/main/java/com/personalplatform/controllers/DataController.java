@@ -4,6 +4,7 @@ import com.personalplatform.services.CsvImportService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import com.personalplatform.repos.StoreDataRepository;
 
 import java.util.Map;
 
@@ -11,9 +12,11 @@ import java.util.Map;
 public class DataController {
 
     private final CsvImportService csvImportService;
+    private final StoreDataRepository storeDataRepository;
 
-    public DataController(CsvImportService csvImportService) {
+    public DataController(CsvImportService csvImportService, StoreDataRepository storeDataRepository) {
         this.csvImportService = csvImportService;
+        this.storeDataRepository = storeDataRepository;
     }
 
     @PostMapping("/add_data")
@@ -44,4 +47,21 @@ public class DataController {
             );
         }
     }
+
+    @GetMapping("/all_data")
+    public ResponseEntity<?> getAllData() {
+
+        return ResponseEntity.ok(
+                storeDataRepository.findAll()
+        );
+    }
+
+
+
+
+
+
+
+
+
 }
