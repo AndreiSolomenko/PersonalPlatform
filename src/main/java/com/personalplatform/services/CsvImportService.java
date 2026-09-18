@@ -173,8 +173,13 @@ public class CsvImportService {
         Integer storeNumber =
                 Integer.parseInt(storeNumberText);
 
-        Integer format =
-                Integer.parseInt(formatText);
+        Integer format;
+
+        if (formatText.isBlank() || "-".equals(formatText)) {
+            format = 0;
+        } else {
+            format = Integer.parseInt(formatText);
+        }
 
         Long sales =
                 Long.parseLong(salesText);
